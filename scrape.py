@@ -24,26 +24,38 @@ basic_stats_df = basic_stats_list[0]
 
 advanced_stats_df.columns = ['_'.join(col) for col in advanced_stats_df.columns.values]
 basic_stats_df.columns = ['_'.join(col) for col in basic_stats_df.columns.values]
+
+advanced_stats_df.drop_duplicates(inplace=True)
+basic_stats_df.drop_duplicates(inplace=True)
+
 # print(advanced_stats_df.columns)
 # print(basic_stats_df.columns)
 
 # got confused with read_html creating a list of dataframes rather than a dataframe
 # print(type()) confirms we have a dataframe now
 
-# next jobs are
-#   access the PSxg-GA column (series?) in advanced_stats_df and assign to a variable
+# access the PSxg-GA column (series?) in advanced_stats_df and assign to a variable
+# access the shots faced column (series) in basic_stats_df and assign to a variable
 # print(advanced_stats_df.loc[:,"Expected_PSxG/SoT"]) confirmed the correct data
 psxg = advanced_stats_df.loc[:,"Expected_PSxG"]
-#   access the shots faced column (series) in basic_stats_df and assign to a variable
 shots_faced = basic_stats_df.loc[:,"Performance_SoTA"]
-print(shots_faced)
 
-# DATA STILL NEEDS CLEANING!!!!
-
-print(psxg)
-
-shots_faced.drop_duplicates(inplace=True)
+# print(psxg.shape)
 # print(shots_faced)
+
+if psxg.shape == shots_faced.shape:
+    print("good to go")
+ 
+# cleaning data for dividing rows
+
+# CANT DO IT THIS WAY
+# NEED TO DROP BEFORE TRANSFORMATION
+# psxg.drop_duplicates(inplace=True)
+# shots_faced.drop_duplicates(inplace=True)
+
+
+# print(shots_faced)
+# print(psxg)
 
 # plot PSxG-GA against shots faced using matplotlib.pyploy
 
@@ -54,7 +66,12 @@ shots_faced.drop_duplicates(inplace=True)
 # initialising fig and ax
 fig, ax = plt.subplots()
 # plot
-# ax.scatter(x, y)
+ax.scatter(shots_faced, psxg)
+plt.show()
+
+
+
+# psxg and shots_faced aren't the same size
 
 # https://matplotlib.org/stable/tutorials/lifecycle.html
 
