@@ -20,15 +20,12 @@ basic_stats_list = pd.read_html(basic_stats_url)
 basic_stats_df = basic_stats_list[0]
 # print(basic_stats_df)
 
-# repeated "Unnamed X_level_0", I think due to how the headers are structured
-# link below shows how to fix that
-# https://www.youtube.com/watch?v=I0TB9m_hyCo
+# repeated "Unnamed X_level_0", due to how the headers are structured
 
 advanced_stats_df.columns = ['_'.join(col) for col in advanced_stats_df.columns.values]
 basic_stats_df.columns = ['_'.join(col) for col in basic_stats_df.columns.values]
 # print(advanced_stats_df.columns)
 # print(basic_stats_df.columns)
-# ok it's kind of worked
 
 # got confused with read_html creating a list of dataframes rather than a dataframe
 # print(type()) confirms we have a dataframe now
@@ -41,10 +38,14 @@ psxg = advanced_stats_df.loc[:,"Expected_PSxG"]
 shots_faced = basic_stats_df.loc[:,"Performance_SoTA"]
 print(shots_faced)
 
-# plot PSxG-GA against shots faced using matplotlib.pyploy
+# DATA STILL NEEDS CLEANING!!!!
 
-# could hack around  for now, bypassing pandas and going from sheets > matplotlib
-# use youtube video instead
+print(psxg)
+
+shots_faced.drop_duplicates(inplace=True)
+# print(shots_faced)
+
+# plot PSxG-GA against shots faced using matplotlib.pyploy
 
 # Plotting
 
