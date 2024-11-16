@@ -21,21 +21,21 @@ import numpy as np
 # print(basic_stats_df)
 
 # repeated "Unnamed X_level_0", I think due to how the headers are structured
+# link below shows how to fix that
+# https://www.youtube.com/watch?v=I0TB9m_hyCo
 
 # got confused with read_html creating a list of dataframes rather than a dataframe
 # print(type()) confirms we have a dataframe now
 
 # next jobs are
-#   access the PSxg-GA column (series?) in advanced_stats_df
-#   access the shots faced column (series) in basic_stats_df
-# series are nested ('Expected', 'PSxG+/-')
-
-# print(advanced_stats_df.columns.values)
+#   access the PSxg-GA column (series?) in advanced_stats_df and assign to a variable
+#   access the shots faced column (series) in basic_stats_df and assign to a variable
 
 
 # plot PSxG-GA against shots faced using matplotlib.pyploy
 
-# maybe hack around  for now, bypassing pandas and going from sheets > matplotlib
+# could hack around  for now, bypassing pandas and going from sheets > matplotlib
+# use youtube video instead
 
 # Plotting
 
